@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PoolingEnemy : Singleton<PoolingEnemy>
+public class PoolingEnemy : MonoBehaviour
 {
     [SerializeField] private PlayerController _player;
     

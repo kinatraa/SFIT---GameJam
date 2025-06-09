@@ -14,7 +14,7 @@ public abstract class AEnemy : MonoBehaviour
     protected virtual void Death()
     {
         gameObject.SetActive(false);
-        PoolingEnemy.Instance.BackToPool(this);
+        GameplayManager.Instance.PoolingEnemy.BackToPool(this);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
