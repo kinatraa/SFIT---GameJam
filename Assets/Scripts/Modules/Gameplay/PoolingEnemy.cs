@@ -9,11 +9,12 @@ public class PoolingEnemy : MonoBehaviour
     [SerializeField] private PlayerController _player;
     
     [SerializeField] private Enemy1 _enemy1Prefab;
+    private int _sideDirection;
 
     private Queue<Enemy1> _enemy1Queue = new Queue<Enemy1>();
     
     
-    public void SpawnEnemy(string _nameEnemy, Vector3 _position)
+    public void SpawnEnemy(string _nameEnemy, Vector3 _position, int side)
     {
         if (_nameEnemy == Define.ENEMY_1)
         {
@@ -22,7 +23,7 @@ public class PoolingEnemy : MonoBehaviour
                 Enemy1 _newEnemy1 = Instantiate(_enemy1Prefab, _position, Quaternion.identity);
                 _enemy1Queue.Enqueue(_newEnemy1);
             }
-            _enemy1Queue.Dequeue().Born(_position);
+            _enemy1Queue.Dequeue().Born(_position, side);
         }
     }
 
@@ -42,16 +43,25 @@ public class PoolingEnemy : MonoBehaviour
 
     private void Update()
     {
-        Spawn();
+        if(Input.GetKeyDown(KeyCode.I)) 
+            Spawn(1);
+        if(Input.GetKeyDown(KeyCode.O)) 
+            Spawn(-1);
     }
 
-    private void Spawn()
+    private void Spawn(int side)
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (side == 1)
         {
-            Vector3 spawnPosition = new Vector3(_player.transform.position.x + 15f, _player.transform.position.y,
+            Vector3 spawnPosition = new Vector3(_player.transform.position.x + 25f, _player.transform.position.y,
                 _player.transform.position.z);
-            SpawnEnemy("Enemy1", spawnPosition);
+            SpawnEnemy("Enemy1", spawnPosition, side);
+        }
+        else if(side == -1)
+        {
+            Vector3 spawnPosition = new Vector3(_player.transform.position.x -25f, _player.transform.position.y,
+                _player.transform.position.z);
+            SpawnEnemy("Enemy1", spawnPosition, side);
         }
     }
 }
