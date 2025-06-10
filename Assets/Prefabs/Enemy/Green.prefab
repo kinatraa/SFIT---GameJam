@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2381858324683369970}
   - component: {fileID: 519303856560949444}
   - component: {fileID: 9037881007807709702}
+  - component: {fileID: -1468581319728795183}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df413238757b6dd40a35d5bdcbb3f709, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,6 +172,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0.009487528, y: -0.054214507}
   m_Size: {x: 0.6448938, y: 0.52291256}
   m_Direction: 1
+--- !u!114 &-1468581319728795183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2947359684811104501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8079ae1cd482e9746a182ff63a9ebb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  PowerPoint: 10
+  Color: 3
 --- !u!1 &8010725989247198228
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4449759829051962832}
   - component: {fileID: 4632115462157807003}
   - component: {fileID: 3476193038617233284}
+  - component: {fileID: 2623482913115995177}
   m_Layer: 0
   m_Name: Yellow
   m_TagString: Untagged
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df413238757b6dd40a35d5bdcbb3f709, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,3 +256,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.029717732, y: 0.0074305534}
   m_Size: {x: 0.66117996, y: 0.77115196}
   m_Direction: 0
+--- !u!114 &2623482913115995177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264344323732533610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8079ae1cd482e9746a182ff63a9ebb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  PowerPoint: 10
+  Color: 1

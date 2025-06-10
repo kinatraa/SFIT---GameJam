@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4061499948428666779}
   - component: {fileID: 5054679166804782059}
   - component: {fileID: 918110604004610505}
+  - component: {fileID: 8139820436482434587}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df413238757b6dd40a35d5bdcbb3f709, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,6 +172,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.03423462}
   m_Size: {x: 0.2114212, y: 0.41682968}
   m_Direction: 0
+--- !u!114 &8139820436482434587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4295859633127141396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8079ae1cd482e9746a182ff63a9ebb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  PowerPoint: 10
+  Color: 2
 --- !u!1 &8372174854210394703
 GameObject:
   m_ObjectHideFlags: 0

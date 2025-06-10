@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 808299391976249963}
   - component: {fileID: 3346885807782669344}
   - component: {fileID: 7705500658998351090}
+  - component: {fileID: -8434552527217740243}
   m_Layer: 0
   m_Name: Purple
   m_TagString: Untagged
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df413238757b6dd40a35d5bdcbb3f709, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,3 +256,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0013910293, y: -0.02413559}
   m_Size: {x: 0.40687066, y: 0.71388406}
   m_Direction: 0
+--- !u!114 &-8434552527217740243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192490203205139234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8079ae1cd482e9746a182ff63a9ebb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  PowerPoint: 10
+  Color: 5
