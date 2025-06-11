@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  PowerPoint: 10
+  PowerPoint: 3
   Color: 0
 --- !u!1 &7394709641224019055
 GameObject:

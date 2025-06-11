@@ -8,8 +8,10 @@ public class PoolingEnemy : MonoBehaviour
 {
     public List<GameObject> EnemyPrefabs = new List<GameObject>();
     public Dictionary<GameEnum.Color, Queue<AEnemy>> EnemyPool = new Dictionary<GameEnum.Color, Queue<AEnemy>>();
+
+    public List<GameObject> BossPool = new List<GameObject>();
     
-    private int _sideDirection;
+    // private int _sideDirection;
 
     private void Awake()
     {

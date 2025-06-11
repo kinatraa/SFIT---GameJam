@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
 {
     public StateMachine StateMachine;
+    public StateManager StateManager;
     
     public PoolingEnemy PoolingEnemy;
     public EnemySpawner EnemySpawner;

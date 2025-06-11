@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8079ae1cd482e9746a182ff63a9ebb9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  PowerPoint: 10
+  Speed: 7
+  PowerPoint: 3
   Color: 6
 --- !u!1 &3566823966854768638
 GameObject:

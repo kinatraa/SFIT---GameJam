@@ -6,6 +6,6 @@ public class AudioManager : Singleton<AudioManager>, IMessageHandle
 {
     public void Handle(Message message)
     {
-        throw new System.NotImplementedException();
+        
     }
 }
