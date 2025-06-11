@@ -64,7 +64,6 @@ public abstract class AEnemy : MonoBehaviour
     {
         _takeDamgeDirection = transform.position - player.transform.position;
         _takeDamgeDirection.Normalize();
-        Debug.Log(_takeDamgeDirection);
         _rb.AddForce(_takeDamgeDirection * 1000f);
     }
 

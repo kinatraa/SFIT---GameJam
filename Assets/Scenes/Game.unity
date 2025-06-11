@@ -1745,8 +1745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d0cbd1e3f17d14db34f0339b2707d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 7
   backgroundSelect: {fileID: 408650561}
+  img: {fileID: 979498404}
 --- !u!1 &933888771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,6 +3231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColorSlot: {fileID: 308053182}
+  mixColorSlot: {fileID: 923421395}
 --- !u!1 &1807060528
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3356,8 @@ MonoBehaviour:
   EnemySpawner: {fileID: 1531149707}
   Player: {fileID: 303989175}
   currentColor: 0
+  selectColor: 0
+  colorInMixStack: 0
 --- !u!114 &1844515264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3367,7 +3371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColor: 0
-  selectColor: 0
   slots:
   - {fileID: 308053182}
   - {fileID: 933888774}

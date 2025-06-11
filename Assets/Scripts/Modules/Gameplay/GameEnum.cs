@@ -13,5 +13,6 @@ public class GameEnum : MonoBehaviour
         Orange,
         Purple,
         Indigo,
+        none,
     }
 }

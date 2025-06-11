@@ -5,6 +5,6 @@ using UnityEngine;
 public class CanvasGame : MonoBehaviour
 {
     public CurrentColorSlot currentColorSlot;
-    
-    
+    public MixColorSlot mixColorSlot;
+
 }
