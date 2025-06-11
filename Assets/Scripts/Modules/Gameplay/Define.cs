@@ -7,4 +7,7 @@ public class Define
 {
     //Enemy
     public const string ENEMY_1 = "Enemy1";
+    
+    
+    
 }

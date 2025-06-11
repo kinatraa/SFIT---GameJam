@@ -18,7 +18,8 @@ public enum MessageType
     OnDataChangedDuringTurn,
     OnSelectDifficulty,
     OnSkillActive,
-    OnGameRestart
+    OnGameRestart,
+    OnSetCurrentColor,
 }
 
 public class Message
