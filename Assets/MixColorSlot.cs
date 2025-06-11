@@ -40,6 +40,7 @@ public class MixColorSlot : SlotBase
             else if (_color1 == GameEnum.Color.Yellow)
             {
                 if(_color2 == GameEnum.Color.Blue) ChangeColor(GameEnum.Color.Green);
+                else if(_color2 == GameEnum.Color.Red) ChangeColor(GameEnum.Color.Orange);
                 else ChangeColor(_color2);
             }
             else if(_color1 == GameEnum.Color.Purple)
