@@ -61,14 +61,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blackness: 0.6
-    - _BlendStrength: 0.5
+    - _Blackness: 0.1
+    - _BlendStrength: 1
     - _Brightness: 2
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EffectEnabled: 0
+    - _EffectEnabled: 1
+    - _FlipX: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -76,7 +77,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Scale: 50
+    - _Scale: 20
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 1
