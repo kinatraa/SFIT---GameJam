@@ -9,28 +9,30 @@ public class CurrentColorSlot : SlotBase
     
     public void ChangeColor(GameEnum.Color c)
     {
+        Color From255(float r, float g, float b) => new Color(r / 255f, g / 255f, b / 255f, 1f);
+
         switch (c)
         {
             case GameEnum.Color.Red:
-                img.color = new Color(255, 0, 0);
+                img.color = From255(255, 0, 46);
                 break;
             case GameEnum.Color.Orange:
-                img.color = new Color(255, 165, 0);
+                img.color = From255(255, 125, 18);
                 break;
             case GameEnum.Color.Yellow:
-                img.color = new Color(255, 255, 0);
+                img.color = From255(255, 217, 34);
                 break;
             case GameEnum.Color.Green:
-                img.color = new Color(0, 128, 0);
+                img.color = From255(0, 186, 0);
                 break;
             case GameEnum.Color.Blue:
-                img.color = new Color(0, 0, 255);
+                img.color = From255(117, 176, 225);
                 break;
             case GameEnum.Color.Purple:
-                img.color = new Color(128, 0, 128);
+                img.color = From255(162, 162, 223);
                 break;
             case GameEnum.Color.Indigo:
-                img.color = new Color(75, 0, 130);
+                img.color = From255(43, 36, 158);
                 break;
         }
     }

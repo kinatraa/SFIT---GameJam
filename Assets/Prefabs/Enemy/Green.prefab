@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 6
   PowerPoint: 4
+  MinPowerPoint: 4
   Color: 3
 --- !u!1 &8010725989247198228
 GameObject:
@@ -212,13 +213,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8010725989247198228}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.015, y: -0.23, z: 0.1}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5423407612960242199}
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5544105815322571347
 SpriteRenderer:
   m_ObjectHideFlags: 0

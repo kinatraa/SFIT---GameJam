@@ -17,12 +17,11 @@ public abstract class AEnemy : MonoBehaviour
     [Header("Stats")]
     public float Speed;
     public float PowerPoint;
+    public float MinPowerPoint;
     public GameEnum.Color Color;
     
     protected Transform _powerCircle;
-    private float _originalCircleScale;
-
-    private float _randomScale;
+    private float _characterScale;
 
     private void Awake()
     {
@@ -31,21 +30,19 @@ public abstract class AEnemy : MonoBehaviour
         _sr = GetComponent<SpriteRenderer>();
         
         _powerCircle = _transform.GetChild(0);
-        _originalCircleScale = _powerCircle.localScale.x;
+        _characterScale = _transform.localScale.x;
     }
 
     protected void OnEnable()
     {
-        _randomScale = Random.Range(1f, 3f);
-        _powerCircle.localScale = new Vector3(_randomScale * _originalCircleScale, _randomScale * _originalCircleScale, 1);
-        PowerPoint *= _randomScale;
-        // _powerCircle.localScale = new Vector3(PowerPoint, PowerPoint, 1);
+        PowerPoint = Random.Range(MinPowerPoint, MinPowerPoint * 3);
+        
+        _powerCircle.localScale = new Vector3(PowerPoint / _characterScale, PowerPoint / _characterScale, 1);
     }
 
     protected void OnDisable()
     {
-        _powerCircle.localScale = new Vector3(_originalCircleScale, _originalCircleScale, 1);
-        PowerPoint /= _randomScale;
+        _powerCircle.localScale = new Vector3(MinPowerPoint / _characterScale, MinPowerPoint / _characterScale, 1);
     }
 
     protected virtual void FixedUpdate()

@@ -5,59 +5,47 @@ using UnityEngine;
 
 public class GameplayController : MonoBehaviour
 {
-    public GameEnum.Color currentColor;
-    public GameEnum.Color selectColor;
-
     public List<SlotBase> slots;
     public Stack<GameEnum.Color> mixColorStack = new Stack<GameEnum.Color>();
 
     private SlotBase _slotSelected;
-    private CurrentColorSlot _currentColorSlot;
 
     private void Start()
     {
-        _currentColorSlot = slots[0] as CurrentColorSlot;
         _slotSelected = slots[1];
         SelectSlot(1);
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetMouseButtonDown(1))
         {
-            SetColorCurrentSlot();
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            
+            Mix();
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SelectSlot(1);
-            selectColor = slots[1].color;
+            SetColorCurrentSlot();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SelectSlot(2);
-            selectColor = slots[2].color;
+            SetColorCurrentSlot();
 
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SelectSlot(3);
-            selectColor = slots[3].color;
-
+            SetColorCurrentSlot();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SelectSlot(4);
-            selectColor = slots[4].color;
-
+            SetColorCurrentSlot();
         }
 
     }
@@ -66,13 +54,30 @@ public class GameplayController : MonoBehaviour
     {
         _slotSelected.DeSelect();
         _slotSelected = slots[slot];
+        GameplayManager.Instance.selectColor = _slotSelected.color;
         slots[slot].Select();
     }
 
     private void SetColorCurrentSlot()
     {
-        currentColor = _slotSelected.color;
-        GameplayManager.Instance.currentColor = currentColor;
+        GameplayManager.Instance.currentColor = _slotSelected.color;
         MessageManager.Instance.SendMessage(new Message(MessageType.OnSetCurrentColor));
+    }
+
+    private void Mix()
+    {
+        if (mixColorStack.Count != 0)
+        {
+            GameplayManager.Instance.colorInMixStack = mixColorStack.Pop();
+            MessageManager.Instance.SendMessage(new Message(MessageType.OnMixColor));
+            mixColorStack.Push(GameplayManager.Instance.colorInMixStack);
+        }
+        else
+        {
+            mixColorStack.Push(_slotSelected.color);
+            GameplayManager.Instance.colorInMixStack = GameEnum.Color.none;
+            MessageManager.Instance.SendMessage(new Message(MessageType.OnMixColor));
+
+        }
     }
 }
