@@ -8,8 +8,11 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
 {
     public CanvasGame canvasGame;
     
+    public TextMeshProUGUI TimeRemainingText;
+    
     private void OnEnable()
     {
+        MessageManager.Instance.AddSubcriber(MessageType.OnTimeChanged, this);
         MessageManager.Instance.AddSubcriber(MessageType.OnSetCurrentColor, this);
         MessageManager.Instance.AddSubcriber(MessageType.OnMixColor, this);
 
@@ -17,9 +20,16 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
 
     private void OnDisable()
     {
+        MessageManager.Instance.RemoveSubcriber(MessageType.OnTimeChanged, this);
         MessageManager.Instance.RemoveSubcriber(MessageType.OnSetCurrentColor, this);
         MessageManager.Instance.RemoveSubcriber(MessageType.OnMixColor, this);
 
+    }
+
+    private void UpdateTimeText()
+    {
+        var m = GameplayManager.Instance.StateManager.MainState as MainState;
+        TimeRemainingText.text = TimeSpan.FromSeconds(m.TimeRemaining).ToString(@"mm\:ss");
     }
 
     public void Handle(Message message)
@@ -32,16 +42,9 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
             case MessageType.OnMixColor:
                 canvasGame.mixColorSlot.MixColor();
                 break;
+            case MessageType.OnTimeChanged:
+                UpdateTimeText();
+                break;
         }
-    }
-    
-    private void OnEnable()
-    {
-        MessageManager.Instance.AddSubcriber(MessageType.OnTimeChanged, this);
-    }
-    
-    private void OnDisable()
-    {
-        MessageManager.Instance.RemoveSubcriber(MessageType.OnTimeChanged, this);
     }
 }

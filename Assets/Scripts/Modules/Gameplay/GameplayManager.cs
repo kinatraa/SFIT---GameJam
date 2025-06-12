@@ -17,7 +17,6 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
     public GameEnum.Color currentColor;
     public GameEnum.Color selectColor;
     public GameEnum.Color colorInMixStack;
-    
 
     public void Handle(Message message)
     {
