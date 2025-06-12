@@ -8,21 +8,29 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
 {
     public CanvasGame canvasGame;
     
-    public TextMeshProUGUI TimeRemainingText;
-
-    private void UpdateTimeRemainingText()
+    private void OnEnable()
     {
-        var mainState = GameplayManager.Instance.StateManager.MainState as MainState;
-        int timeRemaining = (int)mainState.TimeRemaining;
-        TimeRemainingText.text = timeRemaining.ToString();
+        MessageManager.Instance.AddSubcriber(MessageType.OnSetCurrentColor, this);
+        MessageManager.Instance.AddSubcriber(MessageType.OnMixColor, this);
+
     }
-    
+
+    private void OnDisable()
+    {
+        MessageManager.Instance.RemoveSubcriber(MessageType.OnSetCurrentColor, this);
+        MessageManager.Instance.RemoveSubcriber(MessageType.OnMixColor, this);
+
+    }
+
     public void Handle(Message message)
     {
         switch (message.type)
         {
-            case MessageType.OnTimeChanged:
-                UpdateTimeRemainingText();
+            case MessageType.OnSetCurrentColor:
+                canvasGame.currentColorSlot.ChangeColor(GameplayManager.Instance.currentColor);
+                break;
+            case MessageType.OnMixColor:
+                canvasGame.mixColorSlot.MixColor();
                 break;
         }
     }

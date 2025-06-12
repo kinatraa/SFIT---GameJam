@@ -20,6 +20,7 @@ public enum MessageType
     OnSkillActive,
     OnGameRestart,
     OnSetCurrentColor,
+    OnMixColor,
 }
 
 public class Message
