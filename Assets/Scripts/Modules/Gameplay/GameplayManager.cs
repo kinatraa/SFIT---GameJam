@@ -15,24 +15,11 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
     public PlayerController Player;
 
     public GameEnum.Color currentColor;
-
-    private void OnEnable()
-    {
-        MessageManager.Instance.AddSubcriber(MessageType.OnSetCurrentColor, this);
-    }
-
-    private void OnDisable()
-    {
-        MessageManager.Instance.RemoveSubcriber(MessageType.OnSetCurrentColor, this);
-    }
+    public GameEnum.Color selectColor;
+    public GameEnum.Color colorInMixStack;
 
     public void Handle(Message message)
     {
-        switch (message.type)
-        {
-            case MessageType.OnSetCurrentColor:
-                UIManager.Instance.canvasGame.currentColorSlot.ChangeColor(currentColor);
-                break;
-        }
+
     }
 }

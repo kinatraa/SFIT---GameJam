@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
         Transform _player = GameplayManager.Instance.Player.transform;
         while (true)
         {
-            int idx = Random.Range(0, colors.Length);
+            int idx = Random.Range(0, 7);
             var e = pool.GetFromPool((GameEnum.Color)colors.GetValue(idx));
             
             if (Random.Range(0, 2) <= 0)
