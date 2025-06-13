@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541866242380898853}
   - component: {fileID: 4663144169690665016}
+  - component: {fileID: 3297083511139960634}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -84,6 +85,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &3297083511139960634
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2740532406027471944}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000059604645, y: -0.000000059604645}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3208962276598149766
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +216,6 @@ GameObject:
   - component: {fileID: 2245248268690320201}
   - component: {fileID: 4449759829051962832}
   - component: {fileID: 4632115462157807003}
-  - component: {fileID: 3476193038617233284}
   - component: {fileID: 2623482913115995177}
   - component: {fileID: 3999762219379180914}
   - component: {fileID: 3738664676544312233}
@@ -308,41 +343,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &3476193038617233284
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5264344323732533610}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.029717732, y: 0.0074305534}
-  m_Size: {x: 0.66117996, y: 0.77115196}
-  m_Direction: 0
 --- !u!114 &2623482913115995177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 10
   PowerPoint: 10
+  MinPowerPoint: 0
   Color: 1
 --- !u!114 &3999762219379180914
 MonoBehaviour:
