@@ -86,7 +86,7 @@ public class MixColorSlot : SlotBase
                 color = GameEnum.Color.Blue;
                 break;
             case GameEnum.Color.Purple:
-                img.color = From255(162, 162, 223);
+                img.color = From255(162, 100, 255);
                 GameplayManager.Instance.colorInMixStack = GameEnum.Color.Purple;
                 color = GameEnum.Color.Purple;
                 break;

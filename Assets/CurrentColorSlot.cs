@@ -29,7 +29,7 @@ public class CurrentColorSlot : SlotBase
                 img.color = From255(117, 176, 225);
                 break;
             case GameEnum.Color.Purple:
-                img.color = From255(162, 162, 223);
+                img.color = From255(162, 100, 255);
                 break;
             case GameEnum.Color.Indigo:
                 img.color = From255(43, 36, 158);
