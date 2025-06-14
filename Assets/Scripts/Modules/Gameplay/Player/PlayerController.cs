@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
         MessageManager.Instance.SendMessage(new Message(MessageType.OnHPChanged));
         if (CurrentHealth <= 0)
         {
-            UIManager.Instance.canvasMenu.Hide();
+            SceneManager.LoadScene("Game");
         }
         StartCoroutine(StopKnockbackAfterDelay());
         _rb.velocity = Vector2.zero;

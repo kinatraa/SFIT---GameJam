@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Pixelplacement;
+using UnityEngine.SceneManagement;
 
 public class MainState : State
 {
@@ -24,6 +25,8 @@ public class MainState : State
         while (_timeRemaining > 0f)
         {
             _timeRemaining -= Time.deltaTime;
+            if(TimeRemaining < 0.5f)
+                SceneManager.LoadScene("Game");
             MessageManager.Instance.SendMessage(new Message(MessageType.OnTimeChanged));
             yield return null;
         }
