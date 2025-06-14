@@ -316,8 +316,7 @@ public class Boss : AEnemy
         {
             _rb.velocity = Vector2.zero;
             _rb.AddForce(_takeDamgeDirection * 10f, ForceMode2D.Impulse);
-            
-            // Khi bị damage, chuyển sang state retreat
+
             _attackCount = 0;
             ChangeState(BossState.Retreating);
         }
@@ -327,10 +326,10 @@ public class Boss : AEnemy
     {
         _hasTakenDamage = true;
         _isDashing = false;
-        _dashTimer = 0f; // Reset dash timer
+        _dashTimer = 0f;
         
         yield return new WaitForSeconds(0.3f);
-        RandomColor();
+        yield return StartCoroutine(FlashRandomColor());
         _hasTakenDamage = false;
         _rb.velocity = Vector2.zero;
     }
@@ -358,6 +357,30 @@ public class Boss : AEnemy
             }
         }
     }
+    
+    private IEnumerator FlashRandomColor()
+    {
+        SpriteRenderer sr = _powerCircle.GetComponent<SpriteRenderer>();
+        Array colors = Enum.GetValues(typeof(GameEnum.Color));
+
+        float flashDuration = 0.5f;
+        float flashInterval = 0.05f;
+
+        float timer = 0f;
+        while (timer < flashDuration)
+        {
+            int idx = Random.Range(0, 7);
+            GameEnum.Color flashColor = (GameEnum.Color)colors.GetValue(idx);
+            sr.color = GameplayManager.Instance.GetColor(flashColor);
+        
+            timer += flashInterval;
+            yield return new WaitForSeconds(flashInterval);
+        }
+        
+        int finalIdx = Random.Range(0, colors.Length);
+        Color = (GameEnum.Color)colors.GetValue(finalIdx);
+        sr.color = GameplayManager.Instance.GetColor(Color);
+    }
 
     private void RandomColor()
     {
@@ -373,6 +396,13 @@ public class Boss : AEnemy
 
     protected override void Death()
     {
+        StartCoroutine(WaitForDeath());
+    }
+
+    private IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        
         gameObject.SetActive(false);
         _dead = false;
         _sr.flipX = false;

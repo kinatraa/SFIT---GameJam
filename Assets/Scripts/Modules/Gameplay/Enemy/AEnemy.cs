@@ -102,7 +102,7 @@ public abstract class AEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (IsEnemySameColor())
+            if (IsEnemySameColor() || GameplayManager.Instance.Player.IsRainbowMode)
             {
                 MessageManager.Instance.SendMessage(new Message(MessageType.OnHitEnemy));
                 _dead = true;

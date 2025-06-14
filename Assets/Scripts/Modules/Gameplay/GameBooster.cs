@@ -36,10 +36,22 @@ public class GameBooster : MonoBehaviour, IMessageHandle
         GameplayManager.Instance.Player.Speed = saveSpeed;
     }
 
+    private Coroutine rainbowCoroutine;
+    
     public IEnumerator RainbowMode(float time)
     {
         GameplayManager.Instance.Player.IsRainbowMode = true;
+        if (rainbowCoroutine == null)
+        {
+            rainbowCoroutine = StartCoroutine(GameplayManager.Instance.Player.FlashRandomColor());
+        }
         yield return new WaitForSeconds(time);
+        if (rainbowCoroutine != null)
+        {
+            StopCoroutine(rainbowCoroutine);
+            rainbowCoroutine = null;
+        }
+        GameplayManager.Instance.Player.SetCurrentColor();
         GameplayManager.Instance.Player.IsRainbowMode = false;
     }
 
