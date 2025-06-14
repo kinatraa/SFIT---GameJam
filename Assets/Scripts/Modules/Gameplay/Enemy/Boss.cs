@@ -6,16 +6,14 @@ using Random = UnityEngine.Random;
 
 public class Boss : AEnemy
 {
-    [Header("Stats")] 
-    public float MaxHealth = 100f;
+    [Header("Stats")] public float MaxHealth = 100f;
     public float CurrentHealth = 100f;
 
-    [Header("AI Behavior")]
-    public float attackRange = 25f;
-    public float minAttackDistance = 10f;   // Khoảng cách tối thiểu để bắt đầu tấn công
-    public float safeDistance = 3f;         // Khoảng cách an toàn
-    public float circleRadius = 15f;        // Bán kính di chuyển vòng tròn
-    
+    [Header("AI Behavior")] public float attackRange = 25f;
+    public float minAttackDistance = 10f; // Khoảng cách tối thiểu để bắt đầu tấn công
+    public float safeDistance = 3f; // Khoảng cách an toàn
+    public float circleRadius = 15f; // Bán kính di chuyển vòng tròn
+
     private bool _isDashing = false;
     private bool _isBackingOff = false;
     private bool _isCircling = false;
@@ -29,9 +27,8 @@ public class Boss : AEnemy
     private float _dashDistance = 0f;
     private float _dashTimer = 0f;
     private float _maxDashTime = 1.5f;
-    
-    [Header("Movement Settings")]
-    public float backOffDistance = 2f;
+
+    [Header("Movement Settings")] public float backOffDistance = 2f;
     public float backOffSpeed = 18f;
     public float circleSpeed = 12f;
     public float waitTime = 0.2f;
@@ -78,7 +75,7 @@ public class Boss : AEnemy
     {
         Vector2 playerPos = GameplayManager.Instance.Player.transform.position;
         float distanceToPlayer = Vector2.Distance(transform.position, playerPos);
-        
+
         _stateTimer += Time.fixedDeltaTime;
 
         switch (_currentState)
@@ -86,22 +83,22 @@ public class Boss : AEnemy
             case BossState.Observing:
                 HandleObserving(playerPos, distanceToPlayer);
                 break;
-                
+
             case BossState.Circling:
                 HandleCircling(playerPos, distanceToPlayer);
                 break;
-                
+
             case BossState.Preparing:
                 HandlePreparing(playerPos, distanceToPlayer);
                 break;
-                
+
             case BossState.Attacking:
                 HandleAttacking(playerPos, distanceToPlayer);
                 break;
-                
+
             case BossState.BackingOff:
                 break;
-                
+
             case BossState.Retreating:
                 HandleRetreating(playerPos, distanceToPlayer);
                 break;
@@ -111,7 +108,7 @@ public class Boss : AEnemy
     private void HandleObserving(Vector2 playerPos, float distance)
     {
         _rb.velocity = Vector2.zero;
-        
+
         if (_stateTimer > 0.5f)
         {
             if (distance < attackRange)
@@ -153,10 +150,10 @@ public class Boss : AEnemy
     {
         _circleCenter = playerPos;
         _circleAngle += circleSpeed * Time.fixedDeltaTime;
-        
+
         Vector2 offset = new Vector2(Mathf.Cos(_circleAngle), Mathf.Sin(_circleAngle)) * circleRadius;
         Vector2 targetPos = _circleCenter + offset;
-        
+
         Vector2 direction = (targetPos - _rb.position).normalized;
         _rb.velocity = direction * circleSpeed;
 
@@ -176,7 +173,7 @@ public class Boss : AEnemy
     private void HandlePreparing(Vector2 playerPos, float distance)
     {
         _rb.velocity = Vector2.zero;
-        
+
         if (_stateTimer > waitTime)
         {
             if (distance <= attackRange && distance >= minAttackDistance)
@@ -200,12 +197,12 @@ public class Boss : AEnemy
         if (_isDashing)
         {
             _dashTimer += Time.fixedDeltaTime;
-            
+
             float distanceTraveled = Vector2.Distance(_dashStartPos, _rb.position);
             bool reachedMaxDistance = distanceTraveled >= _dashDistance;
             bool nearPlayer = Vector2.Distance(_rb.position, playerPos) <= 2f;
             bool timeOut = _dashTimer >= _maxDashTime;
-            
+
             if (reachedMaxDistance || nearPlayer || timeOut)
             {
                 _isDashing = false;
@@ -234,12 +231,11 @@ public class Boss : AEnemy
     }
 
 
-
     private void ChangeState(BossState newState)
     {
         _currentState = newState;
         _stateTimer = 0f;
-        
+
         if (newState == BossState.Preparing || newState == BossState.BackingOff)
         {
             _rb.velocity = Vector2.zero;
@@ -254,7 +250,7 @@ public class Boss : AEnemy
         _dashDirection = direction;
         _dashStartPos = _rb.position;
         _dashTimer = 0f;
-        
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         _dashDistance = Mathf.Clamp(distanceToPlayer + 2f, 5f, 15f);
 
@@ -264,10 +260,10 @@ public class Boss : AEnemy
     private IEnumerator SmartBackOff()
     {
         ChangeState(BossState.BackingOff);
-        
+
         Vector2 playerPos = GameplayManager.Instance.Player.transform.position;
         Vector2 backDirection;
-        
+
         float distanceToPlayer = Vector2.Distance(transform.position, playerPos);
         if (distanceToPlayer < safeDistance)
         {
@@ -275,8 +271,9 @@ public class Boss : AEnemy
         }
         else
         {
-            backDirection = Random.value < 0.4f ? -_dashDirection : 
-                           new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            backDirection = Random.value < 0.4f
+                ? -_dashDirection
+                : new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         }
 
         Vector2 start = _rb.position;
@@ -327,7 +324,7 @@ public class Boss : AEnemy
         _hasTakenDamage = true;
         _isDashing = false;
         _dashTimer = 0f;
-        
+
         yield return new WaitForSeconds(0.3f);
         yield return StartCoroutine(FlashRandomColor());
         _hasTakenDamage = false;
@@ -343,7 +340,7 @@ public class Boss : AEnemy
             if (!IsEnemyWeaker())
             {
                 GameplayManager.Instance.Player.TakeDamage(this, 10f);
-                
+
                 if (_currentState == BossState.Attacking)
                 {
                     _isDashing = false;
@@ -357,11 +354,15 @@ public class Boss : AEnemy
             }
         }
     }
-    
+
     private IEnumerator FlashRandomColor()
     {
         SpriteRenderer sr = _powerCircle.GetComponent<SpriteRenderer>();
-        Array colors = Enum.GetValues(typeof(GameEnum.Color));
+        List<GameEnum.Color> colors = new List<GameEnum.Color>()
+        {
+            GameEnum.Color.Red, GameEnum.Color.Blue, GameEnum.Color.Green, GameEnum.Color.Indigo, GameEnum.Color.Orange,
+            GameEnum.Color.Purple, GameEnum.Color.Yellow
+        };
 
         float flashDuration = 0.5f;
         float flashInterval = 0.05f;
@@ -369,16 +370,16 @@ public class Boss : AEnemy
         float timer = 0f;
         while (timer < flashDuration)
         {
-            int idx = Random.Range(0, 7);
-            GameEnum.Color flashColor = (GameEnum.Color)colors.GetValue(idx);
+            int idx = Random.Range(0, colors.Count);
+            GameEnum.Color flashColor = colors[idx];
             sr.color = GameplayManager.Instance.GetColor(flashColor);
-        
+
             timer += flashInterval;
             yield return new WaitForSeconds(flashInterval);
         }
-        
-        int finalIdx = Random.Range(0, colors.Length);
-        Color = (GameEnum.Color)colors.GetValue(finalIdx);
+
+        int finalIdx = Random.Range(0, colors.Count);
+        Color = colors[finalIdx];
         sr.color = GameplayManager.Instance.GetColor(Color);
     }
 
@@ -402,7 +403,7 @@ public class Boss : AEnemy
     private IEnumerator WaitForDeath()
     {
         yield return new WaitForSeconds(2f);
-        
+
         gameObject.SetActive(false);
         _dead = false;
         _sr.flipX = false;
