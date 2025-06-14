@@ -134,16 +134,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+            MessageManager.Instance.SendMessage(new Message(MessageType.OnCollectItem));
             BoostItem item = other.GetComponent<BoostItem>();
             if(item.boosterType == GameEnum.BoosterType.Heal)
                 GameplayManager.Instance.GameBooster.Heal();
             else if(item.boosterType == GameEnum.BoosterType.IncreaseTime)
                 GameplayManager.Instance.GameBooster.IncreaseTime();
             else if(item.boosterType == GameEnum.BoosterType.UpSpeed)
-                StartCoroutine(GameplayManager.Instance.GameBooster.UpSpeed(5f));
+                StartCoroutine(GameplayManager.Instance.GameBooster.UpSpeed(10f));
             else if(item.boosterType == GameEnum.BoosterType.FreezeMode)
-                StartCoroutine(GameplayManager.Instance.GameBooster.FreezeMode(5f));
-            else StartCoroutine(GameplayManager.Instance.GameBooster.RainbowMode(5f));
+                StartCoroutine(GameplayManager.Instance.GameBooster.FreezeMode(10f));
+            else StartCoroutine(GameplayManager.Instance.GameBooster.RainbowMode(10f));
             
             Destroy(other.gameObject);
         }

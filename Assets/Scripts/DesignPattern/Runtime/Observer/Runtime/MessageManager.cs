@@ -22,6 +22,8 @@ public enum MessageType
     OnSetCurrentColor,
     OnMixColor,
     OnHPChanged,
+    OnCollectItem,
+    OnHitEnemy,
 }
 
 public class Message

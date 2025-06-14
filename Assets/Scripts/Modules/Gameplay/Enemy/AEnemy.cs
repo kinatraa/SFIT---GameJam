@@ -104,9 +104,10 @@ public abstract class AEnemy : MonoBehaviour
         {
             if (PowerPoint <= GameplayManager.Instance.Player.PowerPoint || GameplayManager.Instance.Player.IsRainbowMode)
             {
+                MessageManager.Instance.SendMessage(new Message(MessageType.OnHitEnemy));
                 _dead = true;
                 TakeDamage(GameplayManager.Instance.Player);
-                if (Random.value <= 0.3f)
+                if (Random.value <= 0.2f)
                 {
                     DropItem();
                 }   
