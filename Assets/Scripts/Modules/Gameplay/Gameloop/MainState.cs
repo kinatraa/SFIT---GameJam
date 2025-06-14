@@ -40,4 +40,9 @@ public class MainState : State
 
         GameplayManager.Instance.EnemySpawner.StopSpawner();
     }
+
+    public void SetTimeRemaing(float time)
+    {
+        _timeRemaining = time;
+    }
 }

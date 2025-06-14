@@ -62,7 +62,7 @@ public abstract class AEnemy : MonoBehaviour
 
     protected void Move()
     {
-        _rb.velocity = new Vector2(-_side * Speed, _rb.velocity.y);
+        _rb.velocity = new Vector2(-_side * GameplayManager.Instance.enemySpeed * Speed, _rb.velocity.y);
     }
 
     public virtual void Born(Vector3 position, int side)
@@ -96,7 +96,7 @@ public abstract class AEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (PowerPoint <= GameplayManager.Instance.Player.PowerPoint)
+            if (PowerPoint <= GameplayManager.Instance.Player.PowerPoint || GameplayManager.Instance.Player.IsRainbowMode)
             {
                 _dead = true;
                 TakeDamage(GameplayManager.Instance.Player);

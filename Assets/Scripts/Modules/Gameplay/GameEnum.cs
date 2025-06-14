@@ -15,4 +15,13 @@ public class GameEnum : MonoBehaviour
         Indigo,
         none,
     }
+    
+    public enum BoosterType
+    {
+        IncreaseTime,
+        Heal,
+        UpSpeed,
+        RainbowMode,
+        FreezeMode,
+    }
 }

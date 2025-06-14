@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float CurrentHealth = 100f;
     public float PowerPoint;
     public float Speed;
+    public bool IsRainbowMode = false;
 
     private float _characterScale;
 
@@ -125,7 +126,24 @@ public class PlayerController : MonoBehaviour
     public void SetCurrentColor()
     {
         Color c = GameplayManager.Instance.GetCurrentColor();
-        c.a = 100f / 255f;
+        c.a = 33f / 255f;
         _powerCircleRenderer.color = c;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            BoostItem item = other.GetComponent<BoostItem>();
+            if(item.boosterType == GameEnum.BoosterType.Heal)
+                GameplayManager.Instance.GameBooster.Heal();
+            else if(item.boosterType == GameEnum.BoosterType.IncreaseTime)
+                GameplayManager.Instance.GameBooster.IncreaseTime();
+            else if(item.boosterType == GameEnum.BoosterType.UpSpeed)
+                StartCoroutine(GameplayManager.Instance.GameBooster.UpSpeed(5f));
+            else if(item.boosterType == GameEnum.BoosterType.FreezeMode)
+                StartCoroutine(GameplayManager.Instance.GameBooster.FreezeMode(5f));
+            else StartCoroutine(GameplayManager.Instance.GameBooster.RainbowMode(5f));
+        }
     }
 }
