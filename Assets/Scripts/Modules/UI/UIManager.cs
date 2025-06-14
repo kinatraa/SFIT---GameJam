@@ -48,7 +48,7 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
                 UpdateTimeText();
                 break;
             case MessageType.OnHPChanged:
-                hpBarController.UpdateHPBar(GameplayManager.Instance.Player.CurrentHealth);
+                hpBarController.UpdateHPBar(GameplayManager.Instance.Player.CurrentHealth, GameplayManager.Instance.Player.MaxHealth);
                 break;
         }
     }

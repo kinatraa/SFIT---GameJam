@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Pixelplacement;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
     public EnemySpawner EnemySpawner;
     
     public PlayerController Player;
+    public CinemachineVirtualCamera VirtualCamera;
 
     public GameEnum.Color currentColor;
     public GameEnum.Color selectColor;
@@ -25,9 +27,14 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
 
     public Color GetCurrentColor()
     {
+        return GetColor(currentColor);
+    }
+    
+    public Color GetColor(GameEnum.Color color)
+    {
         Color From255(float r, float g, float b) => new Color(r / 255f, g / 255f, b / 255f, 1f);
 
-        switch (currentColor)
+        switch (color)
         {
             case GameEnum.Color.Red:
                 return From255(255, 0, 46);
@@ -46,5 +53,10 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
         }
         
         return Color.white;
+    }
+
+    public void CameraStopFollowPlayer()
+    {
+        VirtualCamera.Follow = null;
     }
 }

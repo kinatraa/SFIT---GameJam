@@ -324,7 +324,7 @@ MonoBehaviour:
   MaxHealth: 100
   CurrentHealth: 100
   PowerPoint: 3
-  Speed: 20
+  Speed: 30
 --- !u!70 &303989176
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -681,6 +681,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7425494456588368374, guid: 162b890620160b84b95f471a6859a80d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7542210129986356441, guid: 162b890620160b84b95f471a6859a80d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.30634
@@ -879,6 +883,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3473767558130686189, guid: 0ee5e55a78d816144ae25043d89e54b7, type: 3}
   m_PrefabInstance: {fileID: 9199714279017195420}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1310837549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6276159269597714951, guid: 0ee5e55a78d816144ae25043d89e54b7, type: 3}
+  m_PrefabInstance: {fileID: 9199714279017195420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1346194600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abb0836c7cb2a7428fc0e59251195d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Duration: 30
+  Duration: 5
 --- !u!1 &1562355174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,6 +1477,7 @@ MonoBehaviour:
   PoolingEnemy: {fileID: 1630148043}
   EnemySpawner: {fileID: 1531149707}
   Player: {fileID: 303989175}
+  VirtualCamera: {fileID: 1310837549}
   currentColor: 0
   selectColor: 0
   colorInMixStack: 0

@@ -33,7 +33,7 @@ public abstract class AEnemy : MonoBehaviour
         _characterScale = _transform.localScale.x;
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         if (Random.Range(0f, 100) < 80)
         {
@@ -89,14 +89,14 @@ public abstract class AEnemy : MonoBehaviour
         _takeDamgeDirection.Normalize();
         _rb.velocity = Vector2.zero;
         _rb.AddForce(_takeDamgeDirection * force, ForceMode2D.Impulse);
-        player.IncreasePowerPoint();
+        player.IncreaseMaxHealth();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            if (PowerPoint <= GameplayManager.Instance.Player.PowerPoint)
+            if (IsEnemyWeaker())
             {
                 _dead = true;
                 TakeDamage(GameplayManager.Instance.Player);
@@ -110,9 +110,25 @@ public abstract class AEnemy : MonoBehaviour
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("MainCamera") && _dead)
+        if (other.CompareTag("MainCamera"))
         {
+            _dead = true;
             Death();
         }
+    }
+    
+    protected bool IsEnemyWeaker()
+    {
+        var playerColor = GameplayManager.Instance.currentColor;
+
+        if ((playerColor == GameEnum.Color.Red && Color == GameEnum.Color.Green) ||
+            (playerColor == GameEnum.Color.Green && Color == GameEnum.Color.Purple) ||
+            (playerColor == GameEnum.Color.Purple && Color == GameEnum.Color.Red) ||
+            (playerColor == GameEnum.Color.Orange && Color == GameEnum.Color.Blue) ||
+            (playerColor == GameEnum.Color.Blue && Color == GameEnum.Color.Yellow) ||
+            (playerColor == GameEnum.Color.Yellow && Color == GameEnum.Color.Indigo) ||
+            (playerColor == GameEnum.Color.Indigo && Color == GameEnum.Color.Orange)) return true;
+
+        return false;
     }
 }

@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         _powerCircleRenderer = _powerCircle.GetComponent<SpriteRenderer>();
 
         SetCurrentColor();
-        IncreasePowerPoint(0);
+        IncreaseMaxHealth(0);
     }
 
     private void Update()
@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
         if (CurrentHealth <= 0f)
         {
             _dead = true;
+            GameplayManager.Instance.CameraStopFollowPlayer();
             _rb.AddForce(takeDamageDirection * 100f, ForceMode2D.Impulse);
         }
         else
@@ -116,10 +117,11 @@ public class PlayerController : MonoBehaviour
         _hasTakenDamage = false;
     }
 
-    public void IncreasePowerPoint(float s = 0.2f)
+    public void IncreaseMaxHealth(float s = 10)
     {
-        PowerPoint += s;
-        _powerCircle.localScale = new Vector3(PowerPoint / _characterScale, PowerPoint / _characterScale, 1);
+        MaxHealth += s;
+        CurrentHealth += s;
+        MessageManager.Instance.SendMessage(new Message(MessageType.OnHPChanged));
     }
 
     public void SetCurrentColor()

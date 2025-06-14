@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class PoolingEnemy : MonoBehaviour
     public List<Boss> BossPool = new List<Boss>();
     
     // private int _sideDirection;
+    private List<Transform> allEnemies = new List<Transform>();
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class PoolingEnemy : MonoBehaviour
                     EnemyPool.Add(newEnemy.Color, new Queue<AEnemy>());
                 }
                 EnemyPool[newEnemy.Color].Enqueue(newEnemy);
+                
+                allEnemies.Add(newEnemy.transform);
             }
         }
     }
@@ -43,6 +47,19 @@ public class PoolingEnemy : MonoBehaviour
     public void BackToPool(AEnemy enemy)
     {
         EnemyPool[enemy.Color].Enqueue(enemy);
+    }
+
+    public bool AllEnemiesDead()
+    {
+        foreach (var e in allEnemies)
+        {
+            if (e.gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     // private void Spawn(int side)

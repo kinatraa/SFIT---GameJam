@@ -16,7 +16,7 @@ public class DelayState : State
     private IEnumerator WaitForDelayState()
     {
         yield return new WaitForSeconds(Duration);
-
+        
         this.Next();
     }
 }

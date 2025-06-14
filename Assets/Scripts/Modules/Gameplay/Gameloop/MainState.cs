@@ -27,6 +27,12 @@ public class MainState : State
             MessageManager.Instance.SendMessage(new Message(MessageType.OnTimeChanged));
             yield return null;
         }
+        GameplayManager.Instance.EnemySpawner.StopSpawner();
+        
+        while (!GameplayManager.Instance.PoolingEnemy.AllEnemiesDead())
+        {
+            yield return null;
+        }
 
         this.Next();
     }
@@ -37,7 +43,5 @@ public class MainState : State
         {
             StopCoroutine(_mainCoroutine);
         }
-
-        GameplayManager.Instance.EnemySpawner.StopSpawner();
     }
 }

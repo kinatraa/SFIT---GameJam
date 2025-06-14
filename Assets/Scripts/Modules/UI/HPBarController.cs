@@ -9,9 +9,9 @@ public class HPBarController : MonoBehaviour
     public Slider HPBar;
     public TextMeshProUGUI _hpText;
 
-    public void UpdateHPBar(float hp)
+    public void UpdateHPBar(float hp, float maxHP)
     {
         _hpText.text = hp.ToString();
-        HPBar.value = (hp / 100f);
+        HPBar.value = (hp / maxHP);
     }
 }
