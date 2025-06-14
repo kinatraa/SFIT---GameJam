@@ -339,7 +339,7 @@ public class Boss : AEnemy
 
             if (!IsEnemyWeaker())
             {
-                GameplayManager.Instance.Player.TakeDamage(this, 10f);
+                GameplayManager.Instance.Player.TakeDamage(this, 50f);
 
                 if (_currentState == BossState.Attacking)
                 {
