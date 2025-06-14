@@ -44,4 +44,9 @@ public class MainState : State
             StopCoroutine(_mainCoroutine);
         }
     }
+
+    public void SetTimeRemaing(float time)
+    {
+        _timeRemaining = time;
+    }
 }

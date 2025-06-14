@@ -63,6 +63,7 @@ public class Boss : AEnemy
 
     protected override void FixedUpdate()
     {
+        Debug.Log(_dashStartPosition);
         if (_dead)
         {
             _rb.velocity = Vector2.zero;

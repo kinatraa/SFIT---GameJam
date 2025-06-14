@@ -62,7 +62,7 @@ public abstract class AEnemy : MonoBehaviour
 
     protected void Move()
     {
-        _rb.velocity = new Vector2(-_side * Speed, _rb.velocity.y);
+        _rb.velocity = new Vector2(-_side * GameplayManager.Instance.enemySpeed * Speed, _rb.velocity.y);
     }
 
     public virtual void Born(Vector3 position, int side)
@@ -92,14 +92,25 @@ public abstract class AEnemy : MonoBehaviour
         player.IncreaseMaxHealth();
     }
 
+    protected virtual void DropItem()
+    {
+        var num = Random.Range(0, 5);
+        Instantiate(GameplayManager.Instance.items[num], transform.position, Quaternion.identity);
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             if (IsEnemyWeaker())
             {
+                MessageManager.Instance.SendMessage(new Message(MessageType.OnHitEnemy));
                 _dead = true;
                 TakeDamage(GameplayManager.Instance.Player);
+                if (Random.value <= 0.2f)
+                {
+                    DropItem();
+                }   
             }
             else
             {

@@ -12,6 +12,9 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
     
     public PoolingEnemy PoolingEnemy;
     public EnemySpawner EnemySpawner;
+
+    public GameBooster GameBooster;
+    public List<BoostItem> items;
     
     public PlayerController Player;
     public CinemachineVirtualCamera VirtualCamera;
@@ -19,6 +22,7 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
     public GameEnum.Color currentColor;
     public GameEnum.Color selectColor;
     public GameEnum.Color colorInMixStack;
+    public float enemySpeed;
 
     public void Handle(Message message)
     {
