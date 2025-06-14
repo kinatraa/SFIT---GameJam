@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
     public void SetCurrentColor()
     {
         Color c = GameplayManager.Instance.GetCurrentColor();
-        c.a = 33f / 255f;
+        c.a = 100f / 255f;
         _powerCircleRenderer.color = c;
     }
 
@@ -149,6 +150,25 @@ public class PlayerController : MonoBehaviour
             else StartCoroutine(GameplayManager.Instance.GameBooster.RainbowMode(10f));
             
             Destroy(other.gameObject);
+        }
+    }
+    
+    public IEnumerator FlashRandomColor()
+    {
+        SpriteRenderer sr = _powerCircle.GetComponent<SpriteRenderer>();
+        Array colors = Enum.GetValues(typeof(GameEnum.Color));
+        
+        float flashInterval = 0.05f;
+
+        float timer = 0f;
+        while (true)
+        {
+            int idx = Random.Range(0, 7);
+            GameEnum.Color flashColor = (GameEnum.Color)colors.GetValue(idx);
+            sr.color = GameplayManager.Instance.GetColor(flashColor);
+        
+            timer += flashInterval;
+            yield return new WaitForSeconds(flashInterval);
         }
     }
 }
