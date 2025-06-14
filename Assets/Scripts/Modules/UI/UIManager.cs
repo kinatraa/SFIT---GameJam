@@ -7,7 +7,7 @@ using UnityEngine;
 public class UIManager : Singleton<UIManager>, IMessageHandle
 {
     public CanvasGame canvasGame;
-    
+    public HPBarController hpBarController;
     public TextMeshProUGUI TimeRemainingText;
     
     private void OnEnable()
@@ -15,6 +15,7 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
         MessageManager.Instance.AddSubcriber(MessageType.OnTimeChanged, this);
         MessageManager.Instance.AddSubcriber(MessageType.OnSetCurrentColor, this);
         MessageManager.Instance.AddSubcriber(MessageType.OnMixColor, this);
+        MessageManager.Instance.AddSubcriber(MessageType.OnHPChanged, this);
 
     }
 
@@ -23,6 +24,7 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
         MessageManager.Instance.RemoveSubcriber(MessageType.OnTimeChanged, this);
         MessageManager.Instance.RemoveSubcriber(MessageType.OnSetCurrentColor, this);
         MessageManager.Instance.RemoveSubcriber(MessageType.OnMixColor, this);
+        MessageManager.Instance.RemoveSubcriber(MessageType.OnHPChanged, this);
 
     }
 
@@ -44,6 +46,9 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
                 break;
             case MessageType.OnTimeChanged:
                 UpdateTimeText();
+                break;
+            case MessageType.OnHPChanged:
+                hpBarController.UpdateHPBar(GameplayManager.Instance.Player.CurrentHealth);
                 break;
         }
     }

@@ -1,76 +1,131 @@
 using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     private Camera _mainCamera;
     private Transform _transform;
     private Rigidbody2D _rb;
-    
+
     private Vector3 _mousePosition;
-    private Vector2 _direction;
-    private float _mouseDistance;
+    private Vector2 _moveDirection;
 
     private Transform _powerCircle;
-    private float _originalCircleScale;
-    
+    private SpriteRenderer _powerCircleRenderer;
+
     [Header("Stats")]
     public float MaxHealth = 100f;
     public float CurrentHealth = 100f;
     public float PowerPoint;
     public float Speed;
 
-    private float OriginalPowerPoint = 5f;
+    private float _characterScale;
+
+    private bool _hasTakenDamage = false;
+    
+    private bool _isKnockback = false;
+    private Vector2 _knockbackDirection;
+    private float _knockbackTimer = 0f;
+    private float _knockbackForce = 10f;
+
+    private bool _dead = false;
 
     private void Awake()
     {
         _mainCamera = Camera.main;
         _transform = transform;
+        _characterScale = transform.localScale.x;
         _rb = GetComponent<Rigidbody2D>();
         CurrentHealth = MaxHealth;
-        
+
         _powerCircle = _transform.GetChild(0);
-        _originalCircleScale = _powerCircle.localScale.x;
+        _powerCircleRenderer = _powerCircle.GetComponent<SpriteRenderer>();
+
+        SetCurrentColor();
+        IncreasePowerPoint(0);
     }
 
-    void Update()
+    private void Update()
     {
-        MoveToMousePosition();
+        UpdateMouseDirection();
     }
 
-    private void MoveToMousePosition()
+    private void FixedUpdate()
     {
-        _mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        _mouseDistance = Vector2.Distance(transform.position, _mousePosition);
-        if (_mouseDistance > 0.1f)
+        if (!_isKnockback && !_dead)
         {
-            _direction = _mousePosition - transform.position;
-            _direction.Normalize();
-            transform.Translate(_direction * (Time.deltaTime * Speed));
+            _rb.velocity = _moveDirection * Speed;
         }
     }
 
-    public void TakeDamage(AEnemy enemy, float dmg = 10f, float force = 100f)
+    private void UpdateMouseDirection()
     {
-        var takeDamgeDirection = transform.position - enemy.transform.position;
-        takeDamgeDirection.Normalize();
-        
-        CurrentHealth -= dmg;
-        if (CurrentHealth <= 0)
+        _mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 currentPosition = _transform.position;
+        float distance = Vector2.Distance(currentPosition, _mousePosition);
+
+        if (distance > 0.1f)
         {
-            _rb.AddForce(takeDamgeDirection * 100f, ForceMode2D.Impulse);
+            _moveDirection = (_mousePosition - (Vector3)currentPosition).normalized;
         }
         else
         {
-            _rb.AddForce(takeDamgeDirection * 5f, ForceMode2D.Impulse);
+            _moveDirection = Vector2.zero;
         }
     }
 
-    public void IncreasePowerPoint(float s = 0.1f)
+    public void TakeDamage(AEnemy enemy, float dmg = 10f, float force = 10f)
     {
-        _powerCircle.localScale += new Vector3(s, s, 0);
-        float ratio = _powerCircle.localScale.x / _originalCircleScale;
-        PowerPoint = OriginalPowerPoint * ratio;
+        if (_hasTakenDamage) return;
+
+        StartCoroutine(ResetTakenDamage());
+
+        Vector2 takeDamageDirection = (transform.position - enemy.transform.position).normalized;
+
+        CurrentHealth -= dmg;
+        MessageManager.Instance.SendMessage(new Message(MessageType.OnHPChanged));
+
+        StartCoroutine(StopKnockbackAfterDelay());
+        _rb.velocity = Vector2.zero;
+        
+        if (CurrentHealth <= 0f)
+        {
+            _dead = true;
+            _rb.AddForce(takeDamageDirection * 100f, ForceMode2D.Impulse);
+        }
+        else
+        {
+            _rb.AddForce(takeDamageDirection * 30f, ForceMode2D.Impulse);
+        }
+        
+        
+    }
+    
+    private IEnumerator StopKnockbackAfterDelay(float delay = 0.3f)
+    {
+        _isKnockback = true;
+        yield return new WaitForSeconds(delay);
+        _isKnockback = false;
+    }
+
+    private IEnumerator ResetTakenDamage()
+    {
+        _hasTakenDamage = true;
+        yield return new WaitForSeconds(2f);
+        _hasTakenDamage = false;
+    }
+
+    public void IncreasePowerPoint(float s = 0.2f)
+    {
+        PowerPoint += s;
+        _powerCircle.localScale = new Vector3(PowerPoint / _characterScale, PowerPoint / _characterScale, 1);
+    }
+
+    public void SetCurrentColor()
+    {
+        Color c = GameplayManager.Instance.GetCurrentColor();
+        c.a = 100f / 255f;
+        _powerCircleRenderer.color = c;
     }
 }

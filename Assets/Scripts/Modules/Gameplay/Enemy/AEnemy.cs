@@ -35,14 +35,21 @@ public abstract class AEnemy : MonoBehaviour
 
     protected void OnEnable()
     {
-        PowerPoint = Random.Range(MinPowerPoint, MinPowerPoint * 3);
-        
+        if (Random.Range(0f, 100) < 80)
+        {
+            PowerPoint = MinPowerPoint;
+        }
+        else
+        {
+            PowerPoint = Random.Range(MinPowerPoint, MinPowerPoint * 3);
+        }
         _powerCircle.localScale = new Vector3(PowerPoint / _characterScale, PowerPoint / _characterScale, 1);
     }
 
     protected void OnDisable()
     {
         _powerCircle.localScale = new Vector3(MinPowerPoint / _characterScale, MinPowerPoint / _characterScale, 1);
+        _rb.velocity = Vector2.zero;
     }
 
     protected virtual void FixedUpdate()
@@ -55,21 +62,14 @@ public abstract class AEnemy : MonoBehaviour
 
     protected void Move()
     {
-        transform.Translate(new Vector2(-_side, 0) * (Time.deltaTime * Speed));
+        _rb.velocity = new Vector2(-_side * Speed, _rb.velocity.y);
     }
 
     public virtual void Born(Vector3 position, int side)
     {
         _side = side;
-        // transform.localScale = new Vector3(-_side, transform.localScale.y, transform.localScale.z);
-        if (side == 1)
-        {
-            _sr.flipX = true;
-        }
-        else
-        {
-            _sr.flipX = false;
-        }
+        if(!_sr) _sr = GetComponent<SpriteRenderer>();
+        _sr.flipX = side == 1;
         transform.position = position;
         gameObject.SetActive(true);
     }
@@ -79,6 +79,7 @@ public abstract class AEnemy : MonoBehaviour
         gameObject.SetActive(false);
         _dead = false;
         _sr.flipX = false;
+        _rb.velocity = Vector2.zero;
         GameplayManager.Instance.PoolingEnemy.BackToPool(this);
     }
 
@@ -86,7 +87,7 @@ public abstract class AEnemy : MonoBehaviour
     {
         _takeDamgeDirection = transform.position - player.transform.position;
         _takeDamgeDirection.Normalize();
-        // Debug.Log(_takeDamgeDirection);
+        _rb.velocity = Vector2.zero;
         _rb.AddForce(_takeDamgeDirection * force, ForceMode2D.Impulse);
         player.IncreasePowerPoint();
     }
@@ -95,19 +96,23 @@ public abstract class AEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _dead = true;
-            TakeDamage(GameplayManager.Instance.Player);
+            if (PowerPoint <= GameplayManager.Instance.Player.PowerPoint)
+            {
+                _dead = true;
+                TakeDamage(GameplayManager.Instance.Player);
+            }
+            else
+            {
+                GameplayManager.Instance.Player.TakeDamage(this);
+            }
         }
     }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("MainCamera"))
+        if (other.CompareTag("MainCamera") && _dead)
         {
-            if (_dead)
-            {
-                Death();
-            }
+            Death();
         }
     }
 }

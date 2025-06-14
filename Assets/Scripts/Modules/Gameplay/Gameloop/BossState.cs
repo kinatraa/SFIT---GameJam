@@ -8,7 +8,7 @@ public class BossState : State
 {
     private void OnEnable()
     {
-        
+        GameplayManager.Instance.EnemySpawner.SpawnBoss();
     }
 
     private void OnDisable()

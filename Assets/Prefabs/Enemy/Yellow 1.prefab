@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4449759829051962832}
   - component: {fileID: 4632115462157807003}
   - component: {fileID: 3476193038617233284}
-  - component: {fileID: 2623482913115995177}
+  - component: {fileID: 8202738016424538618}
   - component: {fileID: 3999762219379180914}
   - component: {fileID: 3738664676544312233}
   m_Layer: 0
@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 5264344323732533610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6, y: -0.38, z: 0}
+  m_LocalPosition: {x: 45.30634, y: -5.835687, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -251,7 +251,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -1832028946, guid: 022367b1e90804942bdb48bac8bc9f35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 8, y: 8}
@@ -343,7 +343,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.029717732, y: 0.0074305534}
   m_Size: {x: 0.66117996, y: 0.77115196}
   m_Direction: 0
---- !u!114 &2623482913115995177
+--- !u!114 &8202738016424538618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,12 +352,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5264344323732533610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8079ae1cd482e9746a182ff63a9ebb9c, type: 3}
+  m_Script: {fileID: 11500000, guid: b02ddd78e3bafca43881d6304813f1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  PowerPoint: 10
+  Speed: 0
+  PowerPoint: 5
+  MinPowerPoint: 5
   Color: 1
+  MaxHealth: 100
+  CurrentHealth: 100
 --- !u!114 &3999762219379180914
 MonoBehaviour:
   m_ObjectHideFlags: 0

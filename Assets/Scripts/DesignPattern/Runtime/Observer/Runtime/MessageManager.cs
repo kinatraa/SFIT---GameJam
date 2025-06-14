@@ -21,6 +21,7 @@ public enum MessageType
     OnGameRestart,
     OnSetCurrentColor,
     OnMixColor,
+    OnHPChanged,
 }
 
 public class Message

@@ -61,6 +61,7 @@ public class GameplayController : MonoBehaviour
     private void SetColorCurrentSlot()
     {
         GameplayManager.Instance.currentColor = _slotSelected.color;
+        GameplayManager.Instance.Player.SetCurrentColor();
         MessageManager.Instance.SendMessage(new Message(MessageType.OnSetCurrentColor));
     }
 
