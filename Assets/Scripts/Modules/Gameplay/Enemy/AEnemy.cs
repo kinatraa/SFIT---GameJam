@@ -92,6 +92,12 @@ public abstract class AEnemy : MonoBehaviour
         player.IncreasePowerPoint();
     }
 
+    protected virtual void DropItem()
+    {
+        var num = Random.Range(0, 5);
+        Instantiate(GameplayManager.Instance.items[num], transform.position, Quaternion.identity);
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -100,6 +106,10 @@ public abstract class AEnemy : MonoBehaviour
             {
                 _dead = true;
                 TakeDamage(GameplayManager.Instance.Player);
+                if (Random.value <= 0.3f)
+                {
+                    DropItem();
+                }   
             }
             else
             {

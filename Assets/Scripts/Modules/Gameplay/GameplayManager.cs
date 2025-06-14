@@ -13,6 +13,7 @@ public class GameplayManager : Singleton<GameplayManager>, IMessageHandle
     public EnemySpawner EnemySpawner;
 
     public GameBooster GameBooster;
+    public List<BoostItem> items;
     
     public PlayerController Player;
 

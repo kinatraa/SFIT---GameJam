@@ -144,6 +144,8 @@ public class PlayerController : MonoBehaviour
             else if(item.boosterType == GameEnum.BoosterType.FreezeMode)
                 StartCoroutine(GameplayManager.Instance.GameBooster.FreezeMode(5f));
             else StartCoroutine(GameplayManager.Instance.GameBooster.RainbowMode(5f));
+            
+            Destroy(other.gameObject);
         }
     }
 }

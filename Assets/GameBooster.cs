@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class GameBooster : MonoBehaviour, IMessageHandle
 {
+    private float saveSpeed;
+    private float saveEnemySpeed;
+    
+    private void Start()
+    {
+        saveSpeed = GameplayManager.Instance.Player.Speed;
+        saveEnemySpeed = GameplayManager.Instance.enemySpeed;
+    }
 
     public void Heal()
     {
@@ -23,10 +31,9 @@ public class GameBooster : MonoBehaviour, IMessageHandle
 
     public IEnumerator UpSpeed(float time)
     {
-        var speed = GameplayManager.Instance.Player.Speed;
         GameplayManager.Instance.Player.Speed += 10f;
         yield return new WaitForSeconds(time);
-        GameplayManager.Instance.Player.Speed = speed;
+        GameplayManager.Instance.Player.Speed = saveSpeed;
     }
 
     public IEnumerator RainbowMode(float time)
@@ -41,7 +48,7 @@ public class GameBooster : MonoBehaviour, IMessageHandle
         var speed = GameplayManager.Instance.enemySpeed;
         GameplayManager.Instance.enemySpeed /= 2;
         yield return new WaitForSeconds(time);
-        GameplayManager.Instance.enemySpeed = speed;
+        GameplayManager.Instance.enemySpeed = saveEnemySpeed;
     }
     
     public void Handle(Message message)
