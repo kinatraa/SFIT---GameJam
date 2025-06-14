@@ -7,6 +7,7 @@ using UnityEngine;
 public class UIManager : Singleton<UIManager>, IMessageHandle
 {
     public CanvasGame canvasGame;
+    public CanvasMenu canvasMenu;
     public HPBarController hpBarController;
     public TextMeshProUGUI TimeRemainingText;
     

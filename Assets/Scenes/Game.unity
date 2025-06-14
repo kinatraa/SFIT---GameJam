@@ -741,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGame: {fileID: 1777086372}
+  canvasMenu: {fileID: 664813672}
   hpBarController: {fileID: 690779700}
   TimeRemainingText: {fileID: 999432889}
 --- !u!1001 &528629300
@@ -2673,6 +2674,33 @@ PrefabInstance:
     - target: {fileID: 3948157166417798576, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821455874300996155, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_text
+      value: "H\u01B0\u1EDBng d\u1EABn\n\nMain Phase: Ng\u01B0\u1EDDi ch\u01A1i ch\u1ECDn
+        m\xE0u (\u0111\u1ECF, v\xE0ng, xanh d\u01B0\u01A1ng, t\xEDm) b\u1EB1ng ph\xEDm
+        1-4. N\u1EBFu m\xE0u tr\xF9ng v\u1EDBi qu\xE1i, g\xE2y s\xE1t th\u01B0\u01A1ng.\n\nBoss
+        Phase: D\xF9ng m\xE0u kh\u1EAFc ch\u1EBF (theo quy lu\u1EADt: m\xE0u tr\u01B0\u1EDBc
+        m\u0169i t\xEAn kh\u1EAFc ch\u1EBF m\xE0u sau, v\xED d\u1EE5: \u0110\u1ECF
+        kh\u1EAFc ch\u1EBF Xanh d\u01B0\u01A1ng). Quy lu\u1EADt hi\u1EC3n th\u1ECB
+        \u1EDF g\xF3c tr\xEAn b\xEAn tr\xE1i.\n\nCh\u1ECDn m\xE0u: Ph\xEDm 1, 2,
+        3, 4 t\u01B0\u01A1ng \u1EE9ng v\u1EDBi c\xE1c m\xE0u c\u01A1 b\u1EA3n.\nMix
+        m\xE0u: Nh\u1EA5n chu\u1ED9t ph\u1EA3i \u0111\u1EC3 mix, th\xEAm m\xE0u v\xE0o
+        \xF4 mix, t\u1EF1 \u0111\u1ED9ng t\u1EA1o m\xE0u m\u1EDBi (\u0110\u1ECF +
+        V\xE0ng = Cam, V\xE0ng + Xanh d\u01B0\u01A1ng = Xanh L\xE1, \u0110\u1ECF
+        + Xanh d\u01B0\u01A1ng = T\xEDm, Xanh d\u01B0\u01A1ng + T\xEDm = Ch\xE0m).\n\n\n\t\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 584.954
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

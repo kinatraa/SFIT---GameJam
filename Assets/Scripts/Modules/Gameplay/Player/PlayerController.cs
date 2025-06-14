@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
     public void SetCurrentColor()
     {
         Color c = GameplayManager.Instance.GetCurrentColor();
-        c.a = 100f / 255f;
+        c.a = 33f / 255f;
         _powerCircleRenderer.color = c;
     }
 
