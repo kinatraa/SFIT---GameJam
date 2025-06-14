@@ -8,6 +8,7 @@ public class UIManager : Singleton<UIManager>, IMessageHandle
 {
     public CanvasGame canvasGame;
     public CanvasMenu canvasMenu;
+    public CanvasMenu canvasStart;
     public HPBarController hpBarController;
     public TextMeshProUGUI TimeRemainingText;
     

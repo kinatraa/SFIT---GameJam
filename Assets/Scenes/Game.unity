@@ -726,6 +726,7 @@ Transform:
   m_Children:
   - {fileID: 1777086368}
   - {fileID: 664813668}
+  - {fileID: 1728303589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &513727412
@@ -742,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGame: {fileID: 1777086372}
   canvasMenu: {fileID: 664813672}
+  canvasStart: {fileID: 1728303590}
   hpBarController: {fileID: 690779700}
   TimeRemainingText: {fileID: 999432889}
 --- !u!1001 &528629300
@@ -1673,6 +1675,165 @@ Transform:
   - {fileID: 573788524}
   m_Father: {fileID: 1844515262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1728303588
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 513727411}
+    m_Modifications:
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056272345373135739, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1728303590}
+    - target: {fileID: 3056272345373135739, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948157166417798576, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948157166417798576, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821455874300996155, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_text
+      value: "H\u01B0\u1EDBng d\u1EABn\n\nMain Phase: Ng\u01B0\u1EDDi ch\u01A1i ch\u1ECDn
+        m\xE0u (\u0111\u1ECF, v\xE0ng, xanh d\u01B0\u01A1ng, t\xEDm) b\u1EB1ng ph\xEDm
+        1-4. N\u1EBFu m\xE0u tr\xF9ng v\u1EDBi qu\xE1i s\u1EBD g\xE2y s\xE1t th\u01B0\u01A1ng.\n\nBoss
+        Phase: D\xF9ng m\xE0u kh\u1EAFc ch\u1EBF \u0111\u1EC3 g\xE2y s\xE1t th\u01B0\u01A1ng
+        (theo quy lu\u1EADt: m\xE0u tr\u01B0\u1EDBc m\u0169i t\xEAn kh\u1EAFc ch\u1EBF
+        m\xE0u sau, v\xED d\u1EE5: \u0110\u1ECF kh\u1EAFc ch\u1EBF Xanh d\u01B0\u01A1ng).
+        Quy lu\u1EADt hi\u1EC3n th\u1ECB \u1EDF g\xF3c tr\xEAn b\xEAn tr\xE1i.\n\nCh\u1ECDn
+        m\xE0u: Ph\xEDm 1, 2, 3, 4 t\u01B0\u01A1ng \u1EE9ng v\u1EDBi c\xE1c m\xE0u
+        c\u01A1 b\u1EA3n.\nMix m\xE0u: Nh\u1EA5n chu\u1ED9t ph\u1EA3i \u0111\u1EC3
+        mix, th\xEAm m\xE0u v\xE0o \xF4 mix, t\u1EF1 \u0111\u1ED9ng t\u1EA1o m\xE0u
+        m\u1EDBi (\u0110\u1ECF + V\xE0ng = Cam, V\xE0ng + Xanh d\u01B0\u01A1ng =
+        Xanh L\xE1, \u0110\u1ECF + Xanh d\u01B0\u01A1ng = T\xEDm, Xanh d\u01B0\u01A1ng
+        + T\xEDm = Ch\xE0m).\n\n\n\t\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 584.954
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153867797244978307, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+      propertyPath: m_text
+      value: "Ch\u01A1i"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 3499360897143699257, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+    - {fileID: 2603809153100292987, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+--- !u!224 &1728303589 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1253960898641798379, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+  m_PrefabInstance: {fileID: 1728303588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728303590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7335933194655672720, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
+  m_PrefabInstance: {fileID: 1728303588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b32ead608f668449852eaab9c63bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1777086368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 751412964877542971, guid: 5e1c24b8f12fd8f4a893203860df97ef, type: 3}
@@ -2679,16 +2840,17 @@ PrefabInstance:
       propertyPath: m_text
       value: "H\u01B0\u1EDBng d\u1EABn\n\nMain Phase: Ng\u01B0\u1EDDi ch\u01A1i ch\u1ECDn
         m\xE0u (\u0111\u1ECF, v\xE0ng, xanh d\u01B0\u01A1ng, t\xEDm) b\u1EB1ng ph\xEDm
-        1-4. N\u1EBFu m\xE0u tr\xF9ng v\u1EDBi qu\xE1i, g\xE2y s\xE1t th\u01B0\u01A1ng.\n\nBoss
-        Phase: D\xF9ng m\xE0u kh\u1EAFc ch\u1EBF (theo quy lu\u1EADt: m\xE0u tr\u01B0\u1EDBc
-        m\u0169i t\xEAn kh\u1EAFc ch\u1EBF m\xE0u sau, v\xED d\u1EE5: \u0110\u1ECF
-        kh\u1EAFc ch\u1EBF Xanh d\u01B0\u01A1ng). Quy lu\u1EADt hi\u1EC3n th\u1ECB
-        \u1EDF g\xF3c tr\xEAn b\xEAn tr\xE1i.\n\nCh\u1ECDn m\xE0u: Ph\xEDm 1, 2,
-        3, 4 t\u01B0\u01A1ng \u1EE9ng v\u1EDBi c\xE1c m\xE0u c\u01A1 b\u1EA3n.\nMix
-        m\xE0u: Nh\u1EA5n chu\u1ED9t ph\u1EA3i \u0111\u1EC3 mix, th\xEAm m\xE0u v\xE0o
-        \xF4 mix, t\u1EF1 \u0111\u1ED9ng t\u1EA1o m\xE0u m\u1EDBi (\u0110\u1ECF +
-        V\xE0ng = Cam, V\xE0ng + Xanh d\u01B0\u01A1ng = Xanh L\xE1, \u0110\u1ECF
-        + Xanh d\u01B0\u01A1ng = T\xEDm, Xanh d\u01B0\u01A1ng + T\xEDm = Ch\xE0m).\n\n\n\t\t"
+        1-4. N\u1EBFu m\xE0u tr\xF9ng v\u1EDBi qu\xE1i s\u1EBD g\xE2y s\xE1t th\u01B0\u01A1ng.\n\nBoss
+        Phase: D\xF9ng m\xE0u kh\u1EAFc ch\u1EBF \u0111\u1EC3 g\xE2y s\xE1t th\u01B0\u01A1ng
+        (theo quy lu\u1EADt: m\xE0u tr\u01B0\u1EDBc m\u0169i t\xEAn kh\u1EAFc ch\u1EBF
+        m\xE0u sau, v\xED d\u1EE5: \u0110\u1ECF kh\u1EAFc ch\u1EBF Xanh d\u01B0\u01A1ng).
+        Quy lu\u1EADt hi\u1EC3n th\u1ECB \u1EDF g\xF3c tr\xEAn b\xEAn tr\xE1i.\n\nCh\u1ECDn
+        m\xE0u: Ph\xEDm 1, 2, 3, 4 t\u01B0\u01A1ng \u1EE9ng v\u1EDBi c\xE1c m\xE0u
+        c\u01A1 b\u1EA3n.\nMix m\xE0u: Nh\u1EA5n chu\u1ED9t ph\u1EA3i \u0111\u1EC3
+        mix, th\xEAm m\xE0u v\xE0o \xF4 mix, t\u1EF1 \u0111\u1ED9ng t\u1EA1o m\xE0u
+        m\u1EDBi (\u0110\u1ECF + V\xE0ng = Cam, V\xE0ng + Xanh d\u01B0\u01A1ng =
+        Xanh L\xE1, \u0110\u1ECF + Xanh d\u01B0\u01A1ng = T\xEDm, Xanh d\u01B0\u01A1ng
+        + T\xEDm = Ch\xE0m).\n\n\n\t\t"
       objectReference: {fileID: 0}
     - target: {fileID: 5695142764741265436, guid: f38e702759bf9d445b62012326a30ea5, type: 3}
       propertyPath: m_SizeDelta.y

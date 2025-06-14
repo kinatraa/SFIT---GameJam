@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CanvasMenu : MonoBehaviour
 {
+    
     public void Restart()
     {
         Time.timeScale = 1;

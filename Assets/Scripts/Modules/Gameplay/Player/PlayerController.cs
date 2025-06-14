@@ -87,7 +87,10 @@ public class PlayerController : MonoBehaviour
 
         CurrentHealth -= dmg;
         MessageManager.Instance.SendMessage(new Message(MessageType.OnHPChanged));
-
+        if (CurrentHealth <= 0)
+        {
+            UIManager.Instance.canvasMenu.Hide();
+        }
         StartCoroutine(StopKnockbackAfterDelay());
         _rb.velocity = Vector2.zero;
         
