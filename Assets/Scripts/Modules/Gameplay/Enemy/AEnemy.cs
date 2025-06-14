@@ -102,7 +102,7 @@ public abstract class AEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (IsEnemyWeaker())
+            if (IsEnemySameColor())
             {
                 MessageManager.Instance.SendMessage(new Message(MessageType.OnHitEnemy));
                 _dead = true;
@@ -141,5 +141,10 @@ public abstract class AEnemy : MonoBehaviour
             (playerColor == GameEnum.Color.Indigo && Color == GameEnum.Color.Orange)) return true;
 
         return false;
+    }
+
+    protected bool IsEnemySameColor()
+    {
+        return Color == GameplayManager.Instance.currentColor;
     }
 }
