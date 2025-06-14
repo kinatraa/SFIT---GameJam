@@ -2092,6 +2092,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1630148044}
     m_Modifications:
+    - target: {fileID: 4632115462157807003, guid: 162b890620160b84b95f471a6859a80d, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5264344323732533610, guid: 162b890620160b84b95f471a6859a80d, type: 3}
       propertyPath: m_Name
       value: Yellow 1
@@ -3125,6 +3129,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502725613}
   m_CullTransparentMesh: 1
+--- !u!114 &1523808497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8202738016424538618, guid: 162b890620160b84b95f471a6859a80d, type: 3}
+  m_PrefabInstance: {fileID: 998199729}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02ddd78e3bafca43881d6304813f1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1523936712
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,7 +3763,7 @@ MonoBehaviour:
   - {fileID: 5119956637390197732, guid: da90b63af8211d94dad4474a09fbc130, type: 3}
   - {fileID: 5264344323732533610, guid: f6b04b03287df674aa6a87a07e3262ed, type: 3}
   BossPool:
-  - {fileID: 0}
+  - {fileID: 1523808497}
 --- !u!4 &1630148044
 Transform:
   m_ObjectHideFlags: 0
