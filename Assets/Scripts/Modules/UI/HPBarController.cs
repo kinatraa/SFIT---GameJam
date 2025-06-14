@@ -12,6 +12,6 @@ public class HPBarController : MonoBehaviour
     public void UpdateHPBar(float hp, float maxHP)
     {
         _hpText.text = hp.ToString();
-        HPBar.value = (hp / maxHP);
+        HPBar.value = Mathf.Min((hp / maxHP), 1f);
     }
 }

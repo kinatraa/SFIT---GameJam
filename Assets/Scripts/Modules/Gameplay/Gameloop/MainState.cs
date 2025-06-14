@@ -25,8 +25,8 @@ public class MainState : State
         while (_timeRemaining > 0f)
         {
             _timeRemaining -= Time.deltaTime;
-            if(TimeRemaining < 0.5f)
-                SceneManager.LoadScene("Game");
+            // if(TimeRemaining < 0.5f)
+            //     SceneManager.LoadScene("Game");
             MessageManager.Instance.SendMessage(new Message(MessageType.OnTimeChanged));
             yield return null;
         }

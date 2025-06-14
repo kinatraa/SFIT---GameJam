@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
             _dead = true;
             GameplayManager.Instance.CameraStopFollowPlayer();
             _rb.AddForce(takeDamageDirection * 100f, ForceMode2D.Impulse);
+            SceneManager.LoadScene("Game");
         }
         else
         {

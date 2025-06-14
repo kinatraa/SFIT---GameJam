@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class Boss : AEnemy
@@ -408,5 +409,6 @@ public class Boss : AEnemy
         _dead = false;
         _sr.flipX = false;
         _rb.velocity = Vector2.zero;
+        SceneManager.LoadScene("Game");
     }
 }
