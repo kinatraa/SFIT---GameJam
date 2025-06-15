@@ -16,9 +16,9 @@ public class GameBooster : MonoBehaviour, IMessageHandle
 
     public void Heal()
     {
-        GameplayManager.Instance.Player.CurrentHealth += 5f;
-        if (GameplayManager.Instance.Player.CurrentHealth > 100)
-            GameplayManager.Instance.Player.CurrentHealth = 100;
+        GameplayManager.Instance.Player.CurrentHealth += 50f;
+        if (GameplayManager.Instance.Player.CurrentHealth >= GameplayManager.Instance.Player.MaxHealth)
+            GameplayManager.Instance.Player.CurrentHealth = GameplayManager.Instance.Player.MaxHealth;
         MessageManager.Instance.SendMessage(new Message(MessageType.OnHPChanged));
     }
 
